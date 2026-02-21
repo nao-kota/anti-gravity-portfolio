@@ -1,0 +1,26 @@
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+/**
+ * Tailwindクラスを安全に結合するユーティリティ。
+ */
+export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+}
+
+/**
+ * 共通のコンテナコンポーネント。
+ */
+export function Container({
+    children,
+    className,
+}: {
+    children: React.ReactNode;
+    className?: string;
+}) {
+    return (
+        <div className={cn("max-w-7xl mx-auto px-6 md:px-12", className)}>
+            {children}
+        </div>
+    );
+}
